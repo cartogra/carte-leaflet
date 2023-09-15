@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js">
+     </script>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-measure@2.1.5/dist/leaflet-measure.css" />
+     <script src="https://cdn.jsdelivr.net/npm/leaflet-measure@2.1.5/dist/leaflet-measure.js">
+     </script>
+
+     <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body> 
+  <div style="display: block;">
+        <iframe src="http://localhost:8080/geoserver/essai/wms?service=WMS&version=1.1.0&request=GetMap&layers=essai%3AARRONDISSEMENYT&bbox=8.49474056400004%2C1.6532140490000415%2C16.18849829100005%2C13.077974387000049&width=517&height=768&srs=EPSG%3A4326&styles=&format=application/openlayers#toggle"></iframe>
+    </div>
+ <div id="map"></div>
+ 
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+
+<!--leaflet-provider--->
+<script src="resources/leaflet-providers.js"></script>
+
+    <script src="pl.js">
+    </script>
+    <script>var wmsLayer = L.geoJson.ajax('http://localhost:8080/geoserver/essai/wms?service=WMS&version=1.1.0&request=GetMap&layers=essai%3AARRONDISSEMENYT&bbox=8.49474056400004%2C1.6532140490000415%2C16.18849829100005%2C13.077974387000049&width=517&height=768&srs=EPSG%3A4326&styles=&format=application/openlayers#toggle', {
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+          // Traitement des données reçues
+          console.log(data);
+        }
+      }).addTo(map);
+
+    s
+   L.control.measure({
+       position: 'topleft',
+       primaryLengthUnit: 'meters',
+       secondaryLengthUnit: 'kilometers',
+       primaryAreaUnit: 'sqmeters',
+       secondaryAreaUnit: 'hectares'
+   }).addTo(map);
+      
+      </script>
+
+</body>
+</html>
